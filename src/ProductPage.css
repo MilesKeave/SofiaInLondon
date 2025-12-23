@@ -1,0 +1,35 @@
+.productPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    gap: 2rem;
+}
+
+.productImage {
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+}
+
+.productInfo {
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.productInfo h1 {
+    margin-bottom: 1rem;
+}
+
+.productPrice {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.productDescription {
+    line-height: 1.6;
+}
+
