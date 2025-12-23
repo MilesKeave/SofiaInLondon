@@ -1,6 +1,6 @@
 import './Header.css'
 
-function Header() {
+function Header({ searchDropdown, setSearchDropdown }) {
   return (
     <div className="mainHeader">
         <div className="navbar">
@@ -12,7 +12,7 @@ function Header() {
                 <h1>SOFIA IN LONDON</h1>
             </div>
             <div className="navbar-right">
-                <button>Search</button>
+                <button onClick={() => setSearchDropdown(!searchDropdown)}>Search</button>
                 <button>About</button>
                 <button>Shopping Cart</button>
             </div>

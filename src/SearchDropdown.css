@@ -1,0 +1,51 @@
+.searchDropdown {
+    height: 200px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+.searchInput{
+    height: 20px;
+    border-color: black;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid black;
+    min-width: 220px;
+    outline: none;
+}
+
+.searchInput:focus {
+    outline: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid black;
+}
+
+.searchResults {
+    width: 100%;
+    max-width: 220px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 120px;
+    overflow-y: auto;
+}
+
+.searchResultItem {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.searchResultItem:hover {
+    background-color: #f0f0f0;
+}
