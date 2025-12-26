@@ -65,9 +65,12 @@
 .galleryItemInfo h3 {
     margin: 0;
     text-align: left;
+    font-weight: normal;
+    font-size: 13px;
 }
 
 .galleryItemInfo p {
     margin: 0;
     text-align: right;
+    font-size: 13px;
 }
