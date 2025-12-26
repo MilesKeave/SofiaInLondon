@@ -6,6 +6,7 @@ import SearchDropdown from './SearchDropdown'
 import ProductPage from './ProductPage'
 import CheckoutPage from './CheckoutPage'
 import OtherGalleryPage from './OtherGalleryPage'
+import AboutPage from './AboutPage'
 import { fetchGalleryItems } from './api'
 
 function App() {
@@ -60,6 +61,8 @@ function App() {
         return <CheckoutPage />
       case 'otherGallery':
         return <OtherGalleryPage />
+      case 'about':
+        return <AboutPage />
       default:
         return (
           <Gallery 

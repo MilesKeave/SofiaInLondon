@@ -12,8 +12,8 @@ function Header({ searchDropdown, setSearchDropdown, setCurrentPage }) {
     >
         <div className="navbar">
             <div className="navbar-left">
-                <button onClick={() => setCurrentPage('otherGallery')}>Shop</button>
-                <button onClick={() => setCurrentPage('gallery')}>Gallery</button>
+                <button onClick={() => setCurrentPage('gallery')}>Shop</button>
+                <button onClick={() => setCurrentPage('otherGallery')}>Gallery</button>
             </div>
             <div className="navbar-center">
                 <h1>SOFIA IN LONDON</h1>
@@ -27,7 +27,7 @@ function Header({ searchDropdown, setSearchDropdown, setCurrentPage }) {
                 >
                   Search
                 </button>
-                <button>About</button>
+                <button onClick={() => setCurrentPage('about')}>About</button>
                 <button onClick={() => setCurrentPage('checkout')}>Shopping Cart</button>
             </div>
         </div>

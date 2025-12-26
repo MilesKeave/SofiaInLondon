@@ -1,9 +1,16 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './ProductPage.css'
 
 function ProductPage({ product }) {
   const alternateImagesRef = useRef(null)
   const productInfoRef = useRef(null)
+  const [mainImage, setMainImage] = useState(product?.imageUrl || '')
+
+  useEffect(() => {
+    if (product) {
+      setMainImage(product.imageUrl)
+    }
+  }, [product])
 
   useEffect(() => {
     const updateHeight = () => {
@@ -45,8 +52,6 @@ function ProductPage({ product }) {
     return <div>No product selected</div>
   }
 
-  console.log("product", product);
-
   return (
     <div className="productPage">
         <div className="alternateImages" ref={alternateImagesRef}>
@@ -56,16 +61,23 @@ function ProductPage({ product }) {
                     src={photoUrl} 
                     alt={`${product.title} - View ${index + 1}`}
                     className="alternateImage"
+                    onClick={() => setMainImage(photoUrl)}
                 />
             ))}
         </div>
         <div className="mainImage">
-            <img src={product.imageUrl} alt={product.title} className="mainImage" />
+            <img src={mainImage} alt={product.title} className="mainImage" />
         </div>
         <div className="productInfo" ref={productInfoRef}>
-            <h1>{product.title}</h1>
-            <p className="productPrice">{product.price}</p>
-            <p className="productDescription">{product.description}</p>
+            <div className="productTitle">
+                <h1>{product.title}</h1>
+                <p className="productPrice">{product.price}</p>
+            </div>
+            <div className= "productDescription">
+                <div className="productSizes">Sizes Include: S M L XL</div>
+                <button className="addToCartButton">Add To Cart</button>
+                <p className="description">{product.description}</p>
+            </div>
         </div>
     </div>
   )

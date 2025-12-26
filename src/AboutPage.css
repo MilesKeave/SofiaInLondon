@@ -1,0 +1,12 @@
+.aboutPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 2rem;
+}
+
+.aboutPage h1 {
+    font-size: 2rem;
+}
+
