@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 import './ProductPage.css'
+import { useShoppingBag } from './ShoppingBagContext'
 
-function ProductPage({ product }) {
+function ProductPage({ product, onAddToBag }) {
   const alternateImagesRef = useRef(null)
   const productInfoRef = useRef(null)
   const [mainImage, setMainImage] = useState(product?.imageUrl || '')
+  const { addToBag } = useShoppingBag()
 
   useEffect(() => {
     if (product) {
@@ -75,7 +77,15 @@ function ProductPage({ product }) {
             </div>
             <div className= "productDescription">
                 <div className="productSizes">Sizes Include: S M L XL</div>
-                <button className="addToCartButton">Add To Cart</button>
+                <button 
+                  className="addToCartButton"
+                  onClick={() => {
+                    addToBag(product, mainImage)
+                    if (onAddToBag) onAddToBag()
+                  }}
+                >
+                  Add To Shopping Bag
+                </button>
                 <p className="description">{product.description}</p>
             </div>
         </div>

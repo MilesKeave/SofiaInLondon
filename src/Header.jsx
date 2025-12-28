@@ -1,6 +1,8 @@
 import './Header.css'
+import { useShoppingBag } from './ShoppingBagContext'
 
 function Header({ searchDropdown, setSearchDropdown, setCurrentPage }) {
+  const { getTotalItems } = useShoppingBag()
   return (
     <div 
       className="mainHeader"
@@ -28,7 +30,9 @@ function Header({ searchDropdown, setSearchDropdown, setCurrentPage }) {
                   Search
                 </button>
                 <button onClick={() => setCurrentPage('about')}>About</button>
-                <button onClick={() => setCurrentPage('checkout')}>Shopping Cart</button>
+                <button onClick={() => setCurrentPage('checkout')}>
+                  Shopping Bag ({getTotalItems()})
+                </button>
             </div>
         </div>
         <div className="subTitle">

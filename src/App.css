@@ -27,6 +27,10 @@
     position: relative;
 }
 
+.mainBody.checkoutPageActive {
+    border-top: 2px solid black;
+}
+
 .searchOverlay {
     position: absolute;
     top: 0;

@@ -7,6 +7,7 @@ import ProductPage from './ProductPage'
 import CheckoutPage from './CheckoutPage'
 import OtherGalleryPage from './OtherGalleryPage'
 import AboutPage from './AboutPage'
+import ShoppingBagSideBar from './ShoppingBagSideBar'
 import { fetchGalleryItems } from './api'
 
 function App() {
@@ -17,6 +18,16 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('')
   const [currentPage, setCurrentPage] = useState('gallery')
   const [selectedProduct, setSelectedProduct] = useState(null)
+  const [isShoppingBagSideBarOpen, setIsShoppingBagSideBarOpen] = useState(false)
+  const [isShoppingBagSideBarClosing, setIsShoppingBagSideBarClosing] = useState(false)
+
+  const closeShoppingBagSideBar = () => {
+    setIsShoppingBagSideBarClosing(true)
+    setTimeout(() => {
+      setIsShoppingBagSideBarOpen(false)
+      setIsShoppingBagSideBarClosing(false)
+    }, 500)
+  }
 
   useEffect(() => {
     const loadGalleryItems = async () => {
@@ -56,7 +67,12 @@ function App() {
           />
         )
       case 'product':
-        return <ProductPage product={selectedProduct} />
+        return (
+          <ProductPage 
+            product={selectedProduct}
+            onAddToBag={() => setIsShoppingBagSideBarOpen(true)}
+          />
+        )
       case 'checkout':
         return <CheckoutPage />
       case 'otherGallery':
@@ -83,7 +99,7 @@ function App() {
         setSearchDropdown={setSearchDropdown}
         setCurrentPage={setCurrentPage}
       />
-      <div className="mainBody">
+      <div className={`mainBody ${currentPage === 'checkout' ? 'checkoutPageActive' : ''}`}>
         {searchDropdown && (
           <>
             <div 
@@ -108,6 +124,19 @@ function App() {
         )}
         {renderPage()}
       </div>
+      {isShoppingBagSideBarOpen && (
+        <>
+          <div 
+            className="shoppingBagSidebarOverlay"
+            onClick={closeShoppingBagSideBar}
+          />
+          <ShoppingBagSideBar 
+            onClose={closeShoppingBagSideBar}
+            isClosing={isShoppingBagSideBarClosing}
+            setCurrentPage={setCurrentPage}
+          />
+        </>
+      )}
     </div>
   )
 }

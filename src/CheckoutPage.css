@@ -1,0 +1,153 @@
+.checkoutPage {
+    padding: 0;
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+}
+
+.checkoutPage > * {
+    flex: 1;
+    width: 50%;
+}
+
+.checkoutPage h1 {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+.ShopifyCheckout {
+    border-right: 1px solid black;
+}
+
+.bagItems {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    border-left: 1px solid black;
+    padding: 20px;
+}
+
+.bagTotal {
+    border-top: 1px solid black;
+    padding-top:10px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    font-weight: normal;
+}
+
+.bagItem {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    height: 50px;
+}
+
+.bagItemImage {
+    height: 50px;
+    width: auto;
+    object-fit: cover;
+    aspect-ratio: 3/4;
+}
+
+.bagItemInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.bagItemTitlePrice {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.bagItemInfo h3 {
+    margin: 0;
+    font-size: 13px;
+    font-weight: normal;
+}
+
+.bagItemInfo p {
+    margin: 0;
+    font-size: 13px;
+    font-weight: normal;
+}
+
+.quantityControls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.quantityControls button {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ddd;
+    background: white;
+    cursor: pointer;
+}
+
+.quantityControls button:hover {
+    background: #f0f0f0;
+}
+
+.quantityControls span {
+    min-width: 30px;
+    text-align: center;
+}
+
+.removeButton {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: normal;
+    text-decoration: none;
+    width: fit-content;
+}
+
+.removeButton:hover {
+    text-decoration: underline;
+}
+
+.bagSummary {
+    border-top: 2px solid #ddd;
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bagSummary h2 {
+    margin: 0;
+    font-size: 13px;
+    font-weight: normal;
+}
+
+.clearBagButton {
+    padding: 0.5rem 1rem;
+    background: #666;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.clearBagButton:hover {
+    background: #444;
+}
+
