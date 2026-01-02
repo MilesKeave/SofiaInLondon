@@ -1,12 +1,68 @@
 .aboutPage {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    height: 100%;
     padding: 2rem;
+    gap: 2rem;
 }
 
-.aboutPage h1 {
-    font-size: 2rem;
+.aboutImage {
+    width: auto;
+    height: 450px;
+    aspect-ratio: 3/4;
+    object-fit: cover;
 }
 
+.aboutDescription {
+    max-width: 600px;
+    text-align: center;
+}
+
+.aboutDescription p {
+    font-size: 13px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.contactHeading {
+    font-size: 15px;
+    font-weight: normal;
+    margin: 0;
+}
+
+.emailButton {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.emailButton:hover {
+    text-decoration: underline;
+}
+
+.socialLogos {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.socialLogo {
+    color: black;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.socialLogo:hover {
+    opacity: 0.7;
+}
