@@ -27,7 +27,7 @@ function ImageGalleryPage({ galleryItems = [], onItemClick }) {
           className="imageGalleryItem"
           onClick={() => onItemClick && onItemClick(item)}
         >
-          <img src={item.photoGalleryImage} alt={item.title || 'Gallery image'} />
+          <img src={item.photoGalleryImage} alt={item.title || 'Gallery image'} draggable="false" />
           <div className="imageGalleryOverlay">
             <p className="imageGalleryDescription">{item.description}</p>
           </div>

@@ -11,7 +11,7 @@ function GalleryItem(props) {
   
   return (
     <div className="galleryItem" onClick={handleClick} style={{ cursor: 'pointer' }}>
-       <img src={item.imageUrl} alt={item.title} />
+       <img src={item.imageUrl} alt={item.title} draggable="false" />
        <div className="galleryItemInfo">
          <h3>{item.title}</h3>
          <p>{item.price}</p>
