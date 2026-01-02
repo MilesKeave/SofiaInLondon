@@ -1,0 +1,25 @@
+.imageGalleryItemPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.imageGalleryItemImage {
+    width: 100%;
+    max-width: 600px;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    margin-bottom: 2rem;
+}
+
+.imageGalleryItemDescription {
+    font-size: 13px;
+    text-align: center;
+    max-width: 600px;
+    line-height: 1.6;
+    margin: 0;
+}
+

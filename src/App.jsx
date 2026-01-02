@@ -5,8 +5,9 @@ import Header from './Header'
 import SearchDropdown from './SearchDropdown'
 import ProductPage from './ProductPage'
 import CheckoutPage from './CheckoutPage'
-import OtherGalleryPage from './OtherGalleryPage'
+import ImageGalleryPage from './ImageGalleryPage'
 import AboutPage from './AboutPage'
+import ImageGalleryItem from './ImageGalleryItem'
 import ShoppingBagSideBar from './ShoppingBagSideBar'
 import { fetchGalleryItems } from './api'
 
@@ -18,6 +19,7 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('')
   const [currentPage, setCurrentPage] = useState('gallery')
   const [selectedProduct, setSelectedProduct] = useState(null)
+  const [selectedGalleryItem, setSelectedGalleryItem] = useState(null)
   const [isShoppingBagSideBarOpen, setIsShoppingBagSideBarOpen] = useState(false)
   const [isShoppingBagSideBarClosing, setIsShoppingBagSideBarClosing] = useState(false)
 
@@ -75,8 +77,19 @@ function App() {
         )
       case 'checkout':
         return <CheckoutPage />
-      case 'otherGallery':
-        return <OtherGalleryPage />
+      case 'imageGallery':
+        if (loading) return <p>Loading...</p>
+        return (
+          <ImageGalleryPage 
+            galleryItems={galleryItems} 
+            onItemClick={(item) => {
+              setSelectedGalleryItem(item)
+              setCurrentPage('imageGalleryItem')
+            }}
+          />
+        )
+      case 'imageGalleryItem':
+        return <ImageGalleryItem item={selectedGalleryItem} />
       case 'about':
         return <AboutPage />
       default:
