@@ -57,7 +57,17 @@
   {
     "photoUrl": "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=400&h=800&fit=crop",
     "description": "Modern urban cityscape at golden hour. Perfect for contemporary office or living spaces.",
-    "linkedProducts": ["Urban Cityscape", "Geometric Art", "London Skyline"]
+    "linkedProducts": ["Urban Cityscape", "Geometric Art", "London Skyline", "Vintage Map", "Desert Sunset"]
+  },
+  {
+    "photoUrl": "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=800&fit=crop",
+    "description": "Collection of nature-inspired prints perfect for any home. Features landscapes, forests, and mountain scenes.",
+    "linkedProducts": ["Mountain Landscape", "Forest Pathway", "Mountain Lake", "Alpine Meadow", "Northern Lights", "Ocean Waves"]
+  },
+  {
+    "photoUrl": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=800&fit=crop",
+    "description": "Coastal and ocean-themed prints collection. Perfect for beach house or coastal decor.",
+    "linkedProducts": ["Coastal Cliffs", "Ocean Waves", "Desert Sunset", "Geometric Art"]
   }
 ]
 

@@ -44,10 +44,10 @@
 }
 
 .featuredDesignsList {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 170px);
     gap: 1rem;
-    flex-wrap: wrap;
+    max-width: calc(170px * 3 + 1rem * 2);
 }
 
 .featuredDesignItem {
