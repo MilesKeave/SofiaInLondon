@@ -5,13 +5,25 @@ import { useShoppingBag } from './ShoppingBagContext'
 function ProductPage({ product, onAddToBag }) {
   const alternateImagesRef = useRef(null)
   const productInfoRef = useRef(null)
+  const mainImageRef = useRef(null)
   const [mainImage, setMainImage] = useState(product?.imageUrl || '')
   const [failedImages, setFailedImages] = useState(new Set())
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const { addToBag } = useShoppingBag()
 
   const handleImageError = (imageUrl) => {
     setFailedImages(prev => new Set([...prev, imageUrl]))
   }
+
+  if (!product) {
+    return <div>No product selected</div>
+  }
+
+  // Combine all images: main image + secondary photos, filtered to exclude failed images
+  const allImages = [
+    product.imageUrl,
+    ...(product.secondaryPhotos || [])
+  ].filter(img => img && !failedImages.has(img))
 
   useEffect(() => {
     if (product) {
@@ -55,15 +67,31 @@ function ProductPage({ product, onAddToBag }) {
     }
   }, [product, failedImages])
 
-  if (!product) {
-    return <div>No product selected</div>
-  }
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!mainImageRef.current) return
+      
+      const container = mainImageRef.current
+      const scrollLeft = container.scrollLeft
+      const containerWidth = container.offsetWidth
+      const imageIndex = Math.round(scrollLeft / containerWidth)
+      
+      setCurrentImageIndex(imageIndex)
+    }
 
-  // Combine all images: main image + secondary photos, filtered to exclude failed images
-  const allImages = [
-    product.imageUrl,
-    ...(product.secondaryPhotos || [])
-  ].filter(img => img && !failedImages.has(img))
+    const container = mainImageRef.current
+    if (container) {
+      container.addEventListener('scroll', handleScroll)
+      // Set initial index
+      handleScroll()
+    }
+
+    return () => {
+      if (container) {
+        container.removeEventListener('scroll', handleScroll)
+      }
+    }
+  }, [allImages])
 
   // Create alternate images list (main image + secondary photos), filtered to exclude failed images
   const alternateImagesList = [
@@ -86,7 +114,7 @@ function ProductPage({ product, onAddToBag }) {
             ))}
         </div>
         <div className="mainImage">
-            <div className="mainImageScrollContainer">
+            <div className="mainImageScrollContainer" ref={mainImageRef}>
                 {allImages.map((imageUrl, index) => (
                     <img 
                         key={index} 
@@ -95,6 +123,14 @@ function ProductPage({ product, onAddToBag }) {
                         className="mainImageItem"
                         draggable="false"
                         onError={() => handleImageError(imageUrl)}
+                    />
+                ))}
+            </div>
+            <div className="imageIndicators">
+                {allImages.map((_, index) => (
+                    <div 
+                        key={index} 
+                        className={`indicatorDot ${index === currentImageIndex ? 'active' : ''}`}
                     />
                 ))}
             </div>

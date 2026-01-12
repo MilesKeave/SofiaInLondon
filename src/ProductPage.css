@@ -22,6 +22,7 @@
     aspect-ratio: 3/4;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .mainImageScrollContainer {
@@ -123,5 +124,97 @@
 
 .addToCartButton:hover {
     background-color: #333;
+}
+
+@media (max-width: 768px) {
+    .alternateImages {
+        display: none !important;
+    }
+
+    .productPage {
+        flex-direction: column;
+        align-items: center;
+        padding: 0.0rem;
+    }
+
+    .mainImage {
+        overflow: hidden;
+        width: 100%;
+        max-width: 100%;
+        aspect-ratio: 3/4;
+        position: relative;
+    }
+
+    .mainImageScrollContainer {
+        flex-direction: row;
+        gap: 1rem;
+        width: 100%;
+        height: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .mainImageScrollContainer::-webkit-scrollbar {
+        display: none;
+    }
+
+    .mainImageItem {
+        width: 100%;
+        min-width: 100%;
+        aspect-ratio: 3/4;
+        scroll-snap-align: start;
+        flex-shrink: 0;
+    }
+
+    .productInfo {
+        width: 100%;
+        max-width: 100%;
+        height: auto !important;
+    }
+
+    .imageIndicators {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        position: absolute;
+        bottom: 1rem;
+        left: 0;
+        right: 0;
+        width: 100%;
+        z-index: 100;
+        pointer-events: none;
+    }
+
+    .indicatorDot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        border: 1px solid black;
+        background: transparent;
+        transition: background-color 0.3s ease;
+    }
+
+    .indicatorDot.active {
+        background: black;
+    }
+
+    .productTitle {
+        padding-bottom: 35px;
+    }
+
+    .productDescription {
+        gap: 15px;
+        max-width: none;
+    }
+
+    .productInfo {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
 }
 

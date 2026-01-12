@@ -154,3 +154,9 @@
     background-color: #333;
 }
 
+@media (max-width: 768px) {
+    .shoppingBagSidebar {
+        width: 350px;
+    }
+}
+

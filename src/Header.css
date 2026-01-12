@@ -70,7 +70,6 @@
     margin: 0;
     cursor: pointer;
     color: inherit;
-    z-index: 1001;
 }
 
 .navbar-left-button {
