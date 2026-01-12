@@ -6,7 +6,12 @@ function ProductPage({ product, onAddToBag }) {
   const alternateImagesRef = useRef(null)
   const productInfoRef = useRef(null)
   const [mainImage, setMainImage] = useState(product?.imageUrl || '')
+  const [failedImages, setFailedImages] = useState(new Set())
   const { addToBag } = useShoppingBag()
+
+  const handleImageError = (imageUrl) => {
+    setFailedImages(prev => new Set([...prev, imageUrl]))
+  }
 
   useEffect(() => {
     if (product) {
@@ -48,27 +53,51 @@ function ProductPage({ product, onAddToBag }) {
         })
       }
     }
-  }, [product])
+  }, [product, failedImages])
 
   if (!product) {
     return <div>No product selected</div>
   }
 
+  // Combine all images: main image + secondary photos, filtered to exclude failed images
+  const allImages = [
+    product.imageUrl,
+    ...(product.secondaryPhotos || [])
+  ].filter(img => img && !failedImages.has(img))
+
+  // Create alternate images list (main image + secondary photos), filtered to exclude failed images
+  const alternateImagesList = [
+    product.imageUrl,
+    ...(product.secondaryPhotos || [])
+  ].filter(img => img && !failedImages.has(img))
+
   return (
     <div className="productPage">
         <div className="alternateImages" ref={alternateImagesRef}>
-            {product.secondaryPhotos && product.secondaryPhotos.map((photoUrl, index) => (
+            {alternateImagesList.map((photoUrl, index) => (
                 <img 
                     key={index} 
                     src={photoUrl} 
                     alt={`${product.title} - View ${index + 1}`}
                     className="alternateImage"
                     onClick={() => setMainImage(photoUrl)}
+                    onError={() => handleImageError(photoUrl)}
                 />
             ))}
         </div>
         <div className="mainImage">
-            <img src={mainImage} alt={product.title} className="mainImage" />
+            <div className="mainImageScrollContainer">
+                {allImages.map((imageUrl, index) => (
+                    <img 
+                        key={index} 
+                        src={imageUrl} 
+                        alt={`${product.title} - View ${index + 1}`}
+                        className="mainImageItem"
+                        draggable="false"
+                        onError={() => handleImageError(imageUrl)}
+                    />
+                ))}
+            </div>
         </div>
         <div className="productInfo" ref={productInfoRef}>
             <div className="productTitle">
