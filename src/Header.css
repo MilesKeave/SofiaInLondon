@@ -19,11 +19,14 @@
     justify-content: center;
     align-items: center;
     flex: 1;
+    min-width: 220px;
 }
 
 .navbar-center h1 {
     font-weight: 300;
     font-size: 1.5rem;
+    text-align: center;
+    width: 100%;
 }
 
 .navbar-right {
@@ -60,17 +63,18 @@
 }
 
 .burgerMenu {
-    display: none;
+    display: none !important;
     background: none;
     border: none;
     padding: 0;
     margin: 0;
     cursor: pointer;
     color: inherit;
-    position: absolute;
-    left: 1rem;
-    top: 1rem;
     z-index: 1001;
+}
+
+.navbar-left-button {
+    display: flex;
 }
 
 .mobileMenuOverlay {
@@ -141,11 +145,20 @@
 
 @media (max-width: 768px) {
     .burgerMenu {
-        display: block;
+        display: flex !important;
+        align-items: center;
     }
 
-    .navbar {
-        display: none;
+    .navbar-left-button {
+        display: none !important;
+    }
+
+    .navbar-center {
+        display: flex;
+    }
+
+    .navbar-right {
+        display: flex;
     }
 
     .mobileMenuOverlay {
@@ -154,6 +167,35 @@
 
     .mobileMenuSidebar {
         display: flex;
+    }
+
+    .searchButtonText,
+    .shoppingBagButtonText {
+        display: none;
+    }
+
+    .searchButton,
+    .shoppingBagButton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .navbar-right .aboutButton {
+        display: none !important;
+    }
+}
+
+/* Hide icons on desktop, show text */
+.searchIcon,
+.shoppingBagIcon {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .searchIcon,
+    .shoppingBagIcon {
+        display: block;
     }
 }
 
