@@ -7,7 +7,7 @@ function ImageGalleryPage({ galleryItems = [], onItemClick }) {
     return <div>No Gallery items</div>
   }
 
-  const itemsWithPhotos = galleryItems.filter(item => item.photoGalleryImage)
+  const itemsWithPhotos = galleryItems.filter(item => item.photoUrl)
 
   if (itemsWithPhotos.length === 0) {
     return (
@@ -27,7 +27,7 @@ function ImageGalleryPage({ galleryItems = [], onItemClick }) {
           className="imageGalleryItem"
           onClick={() => onItemClick && onItemClick(item)}
         >
-          <img src={item.photoGalleryImage} alt={item.title || 'Gallery image'} draggable="false" />
+          <img src={item.photoUrl} alt="Gallery image" draggable="false" />
           <div className="imageGalleryOverlay">
             <p className="imageGalleryDescription">{item.description}</p>
           </div>

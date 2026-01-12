@@ -9,12 +9,15 @@ import ImageGalleryPage from './ImageGalleryPage'
 import AboutPage from './AboutPage'
 import ImageGalleryItem from './ImageGalleryItem'
 import ShoppingBagSideBar from './ShoppingBagSideBar'
-import { fetchGalleryItems } from './api'
+import { fetchGalleryItems, fetchImageGalleryItems } from './api'
 
 function App() {
   const [galleryItems, setGalleryItems] = useState([])
+  const [imageGalleryItems, setImageGalleryItems] = useState([])
   const [loading, setLoading] = useState(true)
+  const [imageGalleryLoading, setImageGalleryLoading] = useState(true)
   const [error, setError] = useState(null)
+  const [imageGalleryError, setImageGalleryError] = useState(null)
   const [searchDropdown, setSearchDropdown] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
   const [currentPage, setCurrentPage] = useState('gallery')
@@ -32,7 +35,7 @@ function App() {
   }
 
   useEffect(() => {
-    const loadGalleryItems = async () => {
+    const loadProducts = async () => {
       try {
         setLoading(true)
         const data = await fetchGalleryItems()
@@ -46,12 +49,27 @@ function App() {
       }
     }
 
-    loadGalleryItems()
+    const loadImageGallery = async () => {
+      try {
+        setImageGalleryLoading(true)
+        const data = await fetchImageGalleryItems()
+        setImageGalleryItems(data)
+        setImageGalleryError(null)
+      } catch (err) {
+        setImageGalleryError('Failed to fetch image gallery items')
+        console.error('Error fetching image gallery items:', err)
+      } finally {
+        setImageGalleryLoading(false)
+      }
+    }
+
+    loadProducts()
+    loadImageGallery()
   }, [])
 
   const renderPage = () => {
-    if (loading) return <p>Loading...</p>
-    if (error) return <p>Error: {error}</p>
+    if (loading && currentPage === 'gallery') return <p>Loading...</p>
+    if (error && currentPage === 'gallery') return <p>Error: {error}</p>
     
     switch (currentPage) {
       case 'gallery':
@@ -78,10 +96,11 @@ function App() {
       case 'checkout':
         return <CheckoutPage />
       case 'imageGallery':
-        if (loading) return <p>Loading...</p>
+        if (imageGalleryLoading) return <p>Loading...</p>
+        if (imageGalleryError) return <p>Error: {imageGalleryError}</p>
         return (
           <ImageGalleryPage 
-            galleryItems={galleryItems} 
+            galleryItems={imageGalleryItems} 
             onItemClick={(item) => {
               setSelectedGalleryItem(item)
               setCurrentPage('imageGalleryItem')

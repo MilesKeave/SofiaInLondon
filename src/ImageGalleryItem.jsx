@@ -8,8 +8,8 @@ function ImageGalleryItem({ item }) {
   return (
     <div className="imageGalleryItemPage">
       <img 
-        src={item.photoGalleryImage} 
-        alt={item.title || 'Gallery image'} 
+        src={item.photoUrl} 
+        alt="Gallery image" 
         className="imageGalleryItemImage"
       />
       <p className="imageGalleryItemDescription">{item.description}</p>
