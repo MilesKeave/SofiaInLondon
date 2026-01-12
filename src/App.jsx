@@ -108,7 +108,17 @@ function App() {
           />
         )
       case 'imageGalleryItem':
-        return <ImageGalleryItem item={selectedGalleryItem} />
+        return (
+          <ImageGalleryItem 
+            item={selectedGalleryItem} 
+            products={galleryItems}
+            onProductClick={(product) => {
+              setSelectedProduct(product)
+              setCurrentPage('product')
+            }}
+            onAddToBag={() => setIsShoppingBagSideBarOpen(true)}
+          />
+        )
       case 'about':
         return <AboutPage />
       default:
