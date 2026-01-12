@@ -59,3 +59,101 @@
     font-size: 14px;
 }
 
+.burgerMenu {
+    display: none;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    color: inherit;
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    z-index: 1001;
+}
+
+.mobileMenuOverlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.mobileMenuSidebar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-color: white;
+    z-index: 1000;
+    padding: 2rem 1.5rem;
+    box-sizing: border-box;
+    flex-direction: column;
+    gap: 1.5rem;
+    transform: translateX(-100%);
+    transition: transform 0.8s ease;
+    overflow-y: auto;
+}
+
+.mobileMenuSidebar.open {
+    transform: translateX(0);
+}
+
+.mobileMenuSidebar.closing {
+    transform: translateX(-100%);
+}
+
+.mobileMenuClose {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-size: 24px;
+    cursor: pointer;
+    color: inherit;
+    align-self: flex-end;
+    margin-bottom: 1rem;
+}
+
+.mobileMenuSidebar button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    text-align: left;
+    font-size: 13px;
+    padding: 0.5rem 0;
+}
+
+.mobileMenuSidebar button:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .burgerMenu {
+        display: block;
+    }
+
+    .navbar {
+        display: none;
+    }
+
+    .mobileMenuOverlay {
+        display: block;
+    }
+
+    .mobileMenuSidebar {
+        display: flex;
+    }
+}
+

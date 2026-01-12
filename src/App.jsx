@@ -25,6 +25,16 @@ function App() {
   const [selectedGalleryItem, setSelectedGalleryItem] = useState(null)
   const [isShoppingBagSideBarOpen, setIsShoppingBagSideBarOpen] = useState(false)
   const [isShoppingBagSideBarClosing, setIsShoppingBagSideBarClosing] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [isMobileMenuClosing, setIsMobileMenuClosing] = useState(false)
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuClosing(true)
+    setTimeout(() => {
+      setMobileMenuOpen(false)
+      setIsMobileMenuClosing(false)
+    }, 800)
+  }
 
   const closeShoppingBagSideBar = () => {
     setIsShoppingBagSideBarClosing(true)
@@ -140,6 +150,10 @@ function App() {
         searchDropdown={searchDropdown} 
         setSearchDropdown={setSearchDropdown}
         setCurrentPage={setCurrentPage}
+        mobileMenuOpen={mobileMenuOpen}
+        setMobileMenuOpen={setMobileMenuOpen}
+        isMobileMenuClosing={isMobileMenuClosing}
+        closeMobileMenu={closeMobileMenu}
       />
       <div className={`mainBody ${currentPage === 'checkout' ? 'checkoutPageActive' : ''}`}>
         {searchDropdown && (
