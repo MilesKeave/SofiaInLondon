@@ -1,8 +1,8 @@
 import './SearchDropdown.css'
 
 function SearchDropdown({ onClose, searchTerm, setSearchTerm, galleryItems, onProductClick, onSearch }) {
-    const matchingProducts = galleryItems.filter(item => 
-        item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    const matchingProducts = galleryItems.filter(item =>
+        item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         item.description.toLowerCase().includes(searchTerm.toLowerCase())
     )
 
@@ -59,7 +59,7 @@ function SearchDropdown({ onClose, searchTerm, setSearchTerm, galleryItems, onPr
                             className="searchResultItem"
                             onClick={() => onProductClick(item)}
                         >
-                            {highlightMatch(item.title, searchTerm)}
+                            {highlightMatch(item.name, searchTerm)}
                         </div>
                     ))}
                 </div>

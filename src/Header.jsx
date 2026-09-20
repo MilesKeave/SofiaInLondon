@@ -58,7 +58,7 @@ function Header({ searchDropdown, setSearchDropdown, setCurrentPage, mobileMenuO
                   <button className="navbar-left-button" onClick={() => setCurrentPage('imageGallery')}>Gallery</button>
               </div>
               <div className="navbar-center">
-                  <h1>SOFIA IN LONDON</h1>
+                  <h1>SIL NEW YORK</h1>
               </div>
               <div className="navbar-right">
                 <button 
@@ -81,7 +81,7 @@ function Header({ searchDropdown, setSearchDropdown, setCurrentPage, mobileMenuO
                   <svg className="shoppingBagIcon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                     <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.618 3.5 4.5 10.5h8l.5-7zM5 14a1 1 0 1 1 0 2 1 1 0 0 1 0-2m5 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
                   </svg>
-                  <span className="shoppingBagButtonText">Shopping Bag ({getTotalItems()})</span>
+                  <span className="shoppingBagButtonText">Bag ({getTotalItems()})</span>
                 </button>
               </div>
           </div>

@@ -1,36 +1,29 @@
+import { useState } from 'react'
 import './Gallery.css'
 import './ImageGalleryPage.css'
 
 function ImageGalleryPage({ galleryItems = [], onItemClick }) {
-  
+  const [hoveredIndex, setHoveredIndex] = useState(null)
+
   if (!galleryItems || galleryItems.length === 0) {
     return <div>No Gallery items</div>
   }
 
-  const itemsWithPhotos = galleryItems.filter(item => item.photoUrl)
-
-  if (itemsWithPhotos.length === 0) {
-    return (
-      <div>
-        <div>No gallery images found</div>
-        <div>Total items: {galleryItems.length}</div>
-        <div>First item keys: {galleryItems[0] ? Object.keys(galleryItems[0]).join(', ') : 'none'}</div>
-      </div>
-    )
-  }
-
   return (
     <div className="scrollableGallery">
-      {itemsWithPhotos.map((item, index) => (
-        <div 
-          key={index} 
+      {galleryItems.map((item, index) => (
+        <div
+          key={item.id || index}
           className="imageGalleryItem"
           onClick={() => onItemClick && onItemClick(item)}
+          onMouseEnter={() => setHoveredIndex(index)}
+          onMouseLeave={() => setHoveredIndex(null)}
         >
-          <img src={item.photoUrl} alt="Gallery image" draggable="false" />
-          <div className="imageGalleryOverlay">
-            <p className="imageGalleryDescription">{item.description}</p>
-          </div>
+          <img
+            src={hoveredIndex === index && item.hoverUrl ? item.hoverUrl : item.photoUrl}
+            alt="Gallery image"
+            draggable="false"
+          />
         </div>
       ))}
     </div>
@@ -38,4 +31,3 @@ function ImageGalleryPage({ galleryItems = [], onItemClick }) {
 }
 
 export default ImageGalleryPage
-

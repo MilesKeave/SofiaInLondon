@@ -15,7 +15,7 @@ function ShoppingBagSideBar({ onClose, isClosing, setCurrentPage }) {
       onClick={(e) => e.stopPropagation()}
     >
       <div className="sidebarHeader">
-        <h2>Shopping Bag</h2>
+        <h2>Bag</h2>
         {onClose && <button onClick={onClose}>×</button>}
       </div>
       

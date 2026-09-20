@@ -83,8 +83,8 @@ function App() {
     
     switch (currentPage) {
       case 'gallery':
-        const filteredGalleryItems = galleryItems.filter(item => 
-          item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        const filteredGalleryItems = galleryItems.filter(item =>
+          item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
           item.description.toLowerCase().includes(searchTerm.toLowerCase())
         )
         return (

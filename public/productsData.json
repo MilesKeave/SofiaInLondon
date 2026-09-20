@@ -1,0 +1,100 @@
+[
+  {
+    "id": "thurloe-handheld-bag",
+    "name": "Thurloe Handheld Bag",
+    "price": "$12",
+    "priceValue": 12,
+    "sizes": "One Size",
+    "skillLevel": 1,
+    "skillLevelMax": 5,
+    "fit": [],
+    "description": "A classic handheld bag pattern suited for beginner makers.",
+    "whatsIncluded": [
+      "A Pattern formatted in both A4 & Letter",
+      "An instruction Pamphlet including:",
+      "How to Use This PDF Pattern",
+      "Materials Needed",
+      "Final Product Images",
+      "Size Guide & Pattern Overview",
+      "Illustrated Instructions"
+    ],
+    "media": [
+      { "type": "image", "src": "/products/thurloe-handheld-bag/image-1.png" },
+      { "type": "image", "src": "/products/thurloe-handheld-bag/image-2.png" },
+      { "type": "video", "src": "/products/thurloe-handheld-bag/media-3.mov" }
+    ],
+    "downloads": {
+      "instruction": "/products/thurloe-handheld-bag/instruction.pdf",
+      "patternA4": "/products/thurloe-handheld-bag/pattern-a4.pdf",
+      "patternLetter": "/products/thurloe-handheld-bag/pattern-letter.pdf"
+    }
+  },
+  {
+    "id": "saville-top",
+    "name": "Saville Top",
+    "price": "$16",
+    "priceValue": 16,
+    "sizes": ["0", "2", "4", "6", "8", "10", "12"],
+    "skillLevel": 4,
+    "skillLevelMax": 5,
+    "fit": [
+      "Pull on fit, no zipper closure (Sizing up is suggested)",
+      "Fits best on A, B & C cup sizes"
+    ],
+    "description": "A wearable top pattern for the confident beginner maker.",
+    "whatsIncluded": [
+      "A Pattern formatted in both A4 & Letter",
+      "An instruction Pamphlet including:",
+      "How to Use This PDF Pattern",
+      "Materials Needed",
+      "Final Product Images",
+      "Size Guide & Pattern Overview",
+      "Illustrated Instructions"
+    ],
+    "media": [
+      { "type": "image", "src": "/products/saville-top/image-1.png" },
+      { "type": "image", "src": "/products/saville-top/image-2.png" },
+      { "type": "image", "src": "/products/saville-top/image-3.png" }
+    ],
+    "downloads": {
+      "instruction": "/products/saville-top/instruction.pdf",
+      "patternA4": "/products/saville-top/pattern-a4.pdf",
+      "patternLetter": "/products/saville-top/pattern-letter.pdf"
+    }
+  },
+  {
+    "id": "carlisle-skirt",
+    "name": "Carlisle Skirt",
+    "price": "$12",
+    "priceValue": 12,
+    "sizes": ["0", "2", "4", "6", "8", "10", "12"],
+    "skillLevel": 1,
+    "skillLevelMax": 5,
+    "fit": [
+      "Maxi length",
+      "Low/mid waisted",
+      "Elastic waistband",
+      "No zipper closure, bias cut recommended for additional stretch"
+    ],
+    "description": "A relaxed maxi skirt pattern perfect for beginner makers.",
+    "whatsIncluded": [
+      "A Pattern formatted in both A4 & Letter",
+      "An instruction Pamphlet including:",
+      "How to Use This PDF Pattern",
+      "Materials Needed",
+      "Final Product Images",
+      "Size Guide & Pattern Overview",
+      "Illustrated Instructions"
+    ],
+    "media": [
+      { "type": "image", "src": "/products/carlisle-skirt/image-1.png" },
+      { "type": "image", "src": "/products/carlisle-skirt/image-2.jpg" },
+      { "type": "video", "src": "/products/carlisle-skirt/media-3.mov" }
+    ],
+    "downloads": {
+      "instruction": "/products/carlisle-skirt/instruction.pdf",
+      "patternA4": "/products/carlisle-skirt/pattern-a4.pdf",
+      "patternLetter": "/products/carlisle-skirt/pattern-letter.pdf"
+    }
+  }
+]

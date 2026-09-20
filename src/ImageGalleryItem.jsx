@@ -9,7 +9,7 @@ function ImageGalleryItem({ item, products = [], onProductClick, onAddToBag }) {
   }
 
   const getProduct = (productTitle) => {
-    return products.find(p => p.title === productTitle)
+    return products.find(p => p.name === productTitle)
   }
 
   const handleProductClick = (productTitle) => {
@@ -22,7 +22,7 @@ function ImageGalleryItem({ item, products = [], onProductClick, onAddToBag }) {
   const handleAddToBag = (productTitle) => {
     const product = getProduct(productTitle)
     if (product) {
-      addToBag(product, product.imageUrl)
+      addToBag(product, product.media?.[0]?.src || '')
       if (onAddToBag) {
         onAddToBag()
       }
@@ -50,20 +50,20 @@ function ImageGalleryItem({ item, products = [], onProductClick, onAddToBag }) {
             return (
               <div key={index} className="featuredDesignItem">
                 <img 
-                  src={product.imageUrl} 
+                  src={product.media?.[0]?.src || ''}
                   alt={productTitle}
                   onClick={() => handleProductClick(productTitle)}
                 />
                 <div className="featuredDesignInfo">
                   <div className="featuredDesignTitlePrice">
-                    <span className="featuredDesignTitle">{product.title}</span>
+                    <span className="featuredDesignTitle">{product.name}</span>
                     <span className="featuredDesignPrice">{product.price}</span>
                   </div>
                   <button 
                     className="addToCartButton"
                     onClick={() => handleAddToBag(productTitle)}
                   >
-                    Add To Shopping Bag
+                    Add To Bag
                   </button>
                 </div>
               </div>
