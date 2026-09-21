@@ -15,8 +15,6 @@ function SkillDots({ level, max }) {
 }
 
 function ProductPage({ product, onAddToBag }) {
-  const alternateImagesRef = useRef(null)
-  const productInfoRef = useRef(null)
   const mainImageRef = useRef(null)
   const mainImageWrapperRef = useRef(null)
   const [mainMediaIndex, setMainMediaIndex] = useState(0)
@@ -34,30 +32,6 @@ function ProductPage({ product, onAddToBag }) {
     if (product) setMainMediaIndex(0)
   }, [product])
 
-  useEffect(() => {
-    const updateHeight = () => {
-      if (alternateImagesRef.current && productInfoRef.current) {
-        const alternateHeight = alternateImagesRef.current.offsetHeight
-        productInfoRef.current.style.height = `${alternateHeight}px`
-      }
-    }
-
-    updateHeight()
-
-    const images = alternateImagesRef.current?.querySelectorAll('img')
-    if (images) {
-      images.forEach(img => {
-        if (img.complete) updateHeight()
-        else img.addEventListener('load', updateHeight)
-      })
-    }
-
-    window.addEventListener('resize', updateHeight)
-    return () => {
-      window.removeEventListener('resize', updateHeight)
-      if (images) images.forEach(img => img.removeEventListener('load', updateHeight))
-    }
-  }, [product])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -82,7 +56,7 @@ function ProductPage({ product, onAddToBag }) {
 
   return (
     <div className="productPage">
-      <div className="alternateImages" ref={alternateImagesRef}>
+      <div className="alternateImages">
         {media.map((m, mediaIndex) => {
           const scrollToItem = () => {
             setMainMediaIndex(mediaIndex)
@@ -154,7 +128,7 @@ function ProductPage({ product, onAddToBag }) {
         </div>
       </div>
 
-      <div className="productInfo" ref={productInfoRef}>
+      <div className="productInfo">
         <div className="productTitle">
           <h1>{product.name}</h1>
           <p className="productPrice">{product.price}</p>

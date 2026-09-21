@@ -19,8 +19,8 @@
       "Illustrated Instructions"
     ],
     "media": [
-      { "type": "image", "src": "/products/thurloe-handheld-bag/image-1.png" },
-      { "type": "image", "src": "/products/thurloe-handheld-bag/image-2.png" },
+      { "type": "image", "src": "/products/thurloe-handheld-bag/image-1.jpg" },
+      { "type": "image", "src": "/products/thurloe-handheld-bag/image-2.jpg" },
       { "type": "video", "src": "/products/thurloe-handheld-bag/media-3.mov" }
     ],
     "payhipUrl": "https://payhip.com/b/WB6hv",
@@ -54,9 +54,9 @@
       "Illustrated Instructions"
     ],
     "media": [
-      { "type": "image", "src": "/products/saville-top/image-1.png" },
-      { "type": "image", "src": "/products/saville-top/image-2.png" },
-      { "type": "image", "src": "/products/saville-top/image-3.png" }
+      { "type": "image", "src": "/products/saville-top/image-1.jpg" },
+      { "type": "image", "src": "/products/saville-top/image-2.jpg" },
+      { "type": "image", "src": "/products/saville-top/image-3.jpg" }
     ],
     "payhipUrl": "https://payhip.com/b/z39AY",
     "downloads": {
@@ -90,7 +90,7 @@
       "Illustrated Instructions"
     ],
     "media": [
-      { "type": "image", "src": "/products/carlisle-skirt/image-1.png" },
+      { "type": "image", "src": "/products/carlisle-skirt/image-1.jpg" },
       { "type": "image", "src": "/products/carlisle-skirt/image-2.jpg" },
       { "type": "video", "src": "/products/carlisle-skirt/media-3.mov" }
     ],

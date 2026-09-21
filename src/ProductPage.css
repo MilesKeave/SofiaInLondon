@@ -63,6 +63,8 @@
     align-items: center;
     gap: 5px;
     font-size: 13px;
+    padding-top: 12px;
+    padding-bottom: 12px;
 }
 
 .skillLabel {
@@ -86,6 +88,7 @@
     font-size: 13px;
     margin: 0;
     padding-left: 1rem;
+    padding-bottom: 10px;
     line-height: 1.6;
 }
 
@@ -125,11 +128,11 @@
     text-align: left;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: flex-start;
+    overflow-y: auto;
 }
 
 .productInfo > * {
-    flex: 1;
     display: flex;
     flex-direction: column;
 }
@@ -137,9 +140,10 @@
 .productDescription {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: flex-start;
     gap: 10px;
     max-width: 350px;
+    margin-top: 90px;
 }
 
 
@@ -299,6 +303,7 @@
     .productDescription {
         gap: 15px;
         max-width: none;
+        margin-top: 50px;
     }
 
     .productInfo {

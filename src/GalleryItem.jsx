@@ -24,10 +24,12 @@ function GalleryItem(props) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
+      {image2 && <link rel="preload" as="image" href={image2} />}
       <img
         src={hovered && image2 ? image2 : image1}
         alt={item.name}
         draggable="false"
+        loading="eager"
       />
       <div className="galleryItemInfo">
         <h3>{item.name}</h3>
