@@ -88,7 +88,7 @@
 .galleryItemInfo h3 {
     margin: 0;
     text-align: left;
-    font-weight: normal;
+    font-weight: inherit;
     font-size: 13px;
 }
 

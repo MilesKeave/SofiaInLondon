@@ -1,10 +1,26 @@
+.scrollableGallery:has(.imageGalleryItem) {
+    gap: calc((100% - 1400px) / 7);
+}
+
+@media (max-width: 1630px) {
+    .scrollableGallery:has(.imageGalleryItem) {
+        gap: calc((100% - 1050px) / 6);
+    }
+}
+
+@media (max-width: 1228px) {
+    .scrollableGallery:has(.imageGalleryItem) {
+        gap: calc((100% - 700px) / 5);
+    }
+}
+
 .imageGalleryItem {
     width: 350px;
     height: 100%;
     display: flex;
     flex-direction: column;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: 28px;
+    padding-bottom: 28px;
     position: relative;
     cursor: pointer;
 }

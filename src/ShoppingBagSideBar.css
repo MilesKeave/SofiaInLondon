@@ -56,14 +56,14 @@
 .sidebarHeader h2 {
     margin: 0;
     font-size: 13px;
-    font-weight: normal;
+    font-weight: inherit;
 }
 
 .sidebarHeader button {
     background: none;
     border: none;
     font-size: 16px;
-    font-weight: normal;
+    font-weight: inherit;
     cursor: pointer;
     padding: 0;
     width: 30px;
@@ -99,13 +99,13 @@
 .sidebarItem h3 {
     margin: 0 0 0.5rem 0;
     font-size: 13px;
-    font-weight: normal;
+    font-weight: inherit;
 }
 
 .sidebarItem p {
     margin: 0 0 0.5rem 0;
     font-size: 13px;
-    font-weight: normal;
+    font-weight: inherit;
 }
 
 .sidebarItem button {
@@ -117,7 +117,7 @@
     color: inherit;
     cursor: pointer;
     font-size: 13px;
-    font-weight: normal;
+    font-weight: inherit;
     text-decoration: none;
 }
 
@@ -133,7 +133,7 @@
 
 .sidebarTotal p {
     font-size: 13px;
-    font-weight: normal;
+    font-weight: inherit;
     margin: 0;
 }
 

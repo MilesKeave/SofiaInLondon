@@ -10,6 +10,7 @@ import AboutPage from './AboutPage'
 import ImageGalleryItem from './ImageGalleryItem'
 import ShoppingBagSideBar from './ShoppingBagSideBar'
 import { fetchGalleryItems, fetchImageGalleryItems } from './api'
+import SuccessPage from './SuccessPage'
 
 function App() {
   const [galleryItems, setGalleryItems] = useState([])
@@ -20,7 +21,8 @@ function App() {
   const [imageGalleryError, setImageGalleryError] = useState(null)
   const [searchDropdown, setSearchDropdown] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
-  const [currentPage, setCurrentPage] = useState('gallery')
+  const isSuccess = new URLSearchParams(window.location.search).get('success') === 'true'
+  const [currentPage, setCurrentPage] = useState(isSuccess ? 'success' : 'gallery')
   const [selectedProduct, setSelectedProduct] = useState(null)
   const [selectedGalleryItem, setSelectedGalleryItem] = useState(null)
   const [isShoppingBagSideBarOpen, setIsShoppingBagSideBarOpen] = useState(false)
@@ -119,9 +121,8 @@ function App() {
         )
       case 'imageGalleryItem':
         return (
-          <ImageGalleryItem 
-            item={selectedGalleryItem} 
-            products={galleryItems}
+          <ImageGalleryItem
+            item={selectedGalleryItem}
             onProductClick={(product) => {
               setSelectedProduct(product)
               setCurrentPage('product')
@@ -129,6 +130,8 @@ function App() {
             onAddToBag={() => setIsShoppingBagSideBarOpen(true)}
           />
         )
+      case 'success':
+        return <SuccessPage setCurrentPage={setCurrentPage} />
       case 'about':
         return <AboutPage />
       default:

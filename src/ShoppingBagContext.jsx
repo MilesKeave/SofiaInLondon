@@ -29,19 +29,16 @@ export const ShoppingBagProvider = ({ children }) => {
 
   const addToBag = (product, selectedImage = null) => {
     setItems(prevItems => {
-      const existingItem = prevItems.find(item => item.id === product.id || item.title === product.title)
-      
-      if (existingItem) {
-        return prevItems
-      } else {
-        return [...prevItems, {
-          id: product.id || product.title,
-          title: product.title,
-          price: product.price,
-          imageUrl: selectedImage || product.imageUrl,
-          quantity: 1
-        }]
-      }
+      const existingItem = prevItems.find(item => item.id === product.id)
+      if (existingItem) return prevItems
+      return [...prevItems, {
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        priceValue: product.priceValue,
+        imageUrl: selectedImage || product.media?.[0]?.src || '',
+        quantity: 1
+      }]
     })
   }
 
@@ -73,11 +70,7 @@ export const ShoppingBagProvider = ({ children }) => {
   }
 
   const getTotalPrice = () => {
-    return items.reduce((total, item) => {
-      const price = parseFloat(item.price.replace('$', ''))
-      const quantity = Math.min(item.quantity, 1)
-      return total + (price * quantity)
-    }, 0)
+    return items.reduce((total, item) => total + (item.priceValue || 0), 0)
   }
 
   const value = {

@@ -1,79 +1,59 @@
 import './ImageGalleryItem.css'
 import { useShoppingBag } from './ShoppingBagContext'
 
-function ImageGalleryItem({ item, products = [], onProductClick, onAddToBag }) {
+function ImageGalleryItem({ item, onProductClick, onAddToBag }) {
   const { addToBag } = useShoppingBag()
-  
+
   if (!item) {
     return <div>No item selected</div>
   }
 
-  const getProduct = (productTitle) => {
-    return products.find(p => p.name === productTitle)
-  }
-
-  const handleProductClick = (productTitle) => {
-    const product = getProduct(productTitle)
-    if (product && onProductClick) {
-      onProductClick(product)
-    }
-  }
-
-  const handleAddToBag = (productTitle) => {
-    const product = getProduct(productTitle)
-    if (product) {
-      addToBag(product, product.media?.[0]?.src || '')
-      if (onAddToBag) {
-        onAddToBag()
-      }
-    }
-  }
+  const hasProducts = item.linkedProducts && item.linkedProducts.length > 0
 
   return (
-    <div className="imageGalleryItemPage">
+    <div className={`imageGalleryItemPage ${!hasProducts ? 'imageGalleryItemPageCentered' : ''}`}>
       <div className="imageGalleryItemImageContainer">
-        <img 
-          src={item.photoUrl} 
-          alt="Gallery image" 
+        <img
+          src={item.photoUrl}
+          alt="Gallery image"
           className="imageGalleryItemImage"
         />
       </div>
-      <div className="imageGalleryItemContent">
-        <div className="featuredDesignsHeader">
-          <h2>Featured Designs:</h2>
-        </div>
-        <div className="featuredDesignsList">
-          {item.linkedProducts && item.linkedProducts.map((productTitle, index) => {
-            const product = getProduct(productTitle)
-            if (!product) return null
-            
-            return (
+      {hasProducts && (
+        <div className="imageGalleryItemContent">
+          <div className="featuredDesignsHeader">
+            <h2>Featured Designs:</h2>
+          </div>
+          <div className="featuredDesignsList">
+            {item.linkedProducts.map((product, index) => (
               <div key={index} className="featuredDesignItem">
-                <img 
+                <img
                   src={product.media?.[0]?.src || ''}
-                  alt={productTitle}
-                  onClick={() => handleProductClick(productTitle)}
+                  alt={product.name}
+                  onClick={() => onProductClick && onProductClick(product)}
                 />
                 <div className="featuredDesignInfo">
                   <div className="featuredDesignTitlePrice">
                     <span className="featuredDesignTitle">{product.name}</span>
                     <span className="featuredDesignPrice">{product.price}</span>
                   </div>
-                  <button 
+                  <button
                     className="addToCartButton"
-                    onClick={() => handleAddToBag(productTitle)}
+                    onClick={() => {
+                      addToBag(product, product.media?.[0]?.src || '')
+                      if (onAddToBag) onAddToBag()
+                    }}
                   >
                     Add To Bag
                   </button>
                 </div>
               </div>
-            )
-          })}
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   )
 }
 
 export default ImageGalleryItem
-

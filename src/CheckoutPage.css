@@ -39,7 +39,7 @@
     justify-content: space-between;
     align-items: center;
     font-size: 13px;
-    font-weight: normal;
+    font-weight: inherit;
 }
 
 .bagItem {
@@ -74,13 +74,13 @@
 .bagItemInfo h3 {
     margin: 0;
     font-size: 13px;
-    font-weight: normal;
+    font-weight: inherit;
 }
 
 .bagItemInfo p {
     margin: 0;
     font-size: 13px;
-    font-weight: normal;
+    font-weight: inherit;
 }
 
 .quantityControls {
@@ -115,7 +115,7 @@
     color: inherit;
     cursor: pointer;
     font-size: 13px;
-    font-weight: normal;
+    font-weight: inherit;
     text-decoration: none;
     width: fit-content;
 }
@@ -135,7 +135,7 @@
 .bagSummary h2 {
     margin: 0;
     font-size: 13px;
-    font-weight: normal;
+    font-weight: inherit;
 }
 
 .clearBagButton {

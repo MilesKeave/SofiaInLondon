@@ -23,6 +23,7 @@
       { "type": "image", "src": "/products/thurloe-handheld-bag/image-2.png" },
       { "type": "video", "src": "/products/thurloe-handheld-bag/media-3.mov" }
     ],
+    "payhipUrl": "https://payhip.com/b/WB6hv",
     "downloads": {
       "instruction": "/products/thurloe-handheld-bag/instruction.pdf",
       "patternA4": "/products/thurloe-handheld-bag/pattern-a4.pdf",
@@ -56,6 +57,7 @@
       { "type": "image", "src": "/products/saville-top/image-2.png" },
       { "type": "image", "src": "/products/saville-top/image-3.png" }
     ],
+    "payhipUrl": "https://payhip.com/b/z39AY",
     "downloads": {
       "instruction": "/products/saville-top/instruction.pdf",
       "patternA4": "/products/saville-top/pattern-a4.pdf",
@@ -91,6 +93,7 @@
       { "type": "image", "src": "/products/carlisle-skirt/image-2.jpg" },
       { "type": "video", "src": "/products/carlisle-skirt/media-3.mov" }
     ],
+    "payhipUrl": "https://payhip.com/b/jDERK",
     "downloads": {
       "instruction": "/products/carlisle-skirt/instruction.pdf",
       "patternA4": "/products/carlisle-skirt/pattern-a4.pdf",
