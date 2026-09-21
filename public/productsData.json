@@ -35,6 +35,7 @@
     "name": "Saville Top",
     "price": "$16",
     "priceValue": 16,
+    "hoverImageIndex": 2,
     "sizes": ["0", "2", "4", "6", "8", "10", "12"],
     "skillLevel": 4,
     "skillLevelMax": 5,

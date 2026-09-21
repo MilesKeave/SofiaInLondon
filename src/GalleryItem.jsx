@@ -6,7 +6,9 @@ function GalleryItem(props) {
   const [hovered, setHovered] = useState(false)
 
   const image1 = item.media?.[0]?.src || ''
-  const image2 = item.media?.[1]?.type === 'image' ? item.media[1].src : null
+  const hoverIndex = item.hoverImageIndex ?? 1
+  const hoverMedia = item.media?.[hoverIndex]
+  const image2 = hoverMedia?.type === 'image' ? hoverMedia.src : null
 
   const handleClick = () => {
     if (onProductClick) {
