@@ -1,7 +1,7 @@
 const PRODUCTS_API_URL = '/productsData.json'
 
 const INSTAGRAM_TOKEN = import.meta.env.VITE_INSTAGRAM_TOKEN
-const INSTAGRAM_API_URL = `https://graph.instagram.com/me/media?fields=id,media_type,media_url,thumbnail_url,children{media_url}&limit=24&access_token=${INSTAGRAM_TOKEN}`
+const INSTAGRAM_API_URL = `https://graph.instagram.com/me/media?fields=id,media_type,media_url,thumbnail_url,caption,children{media_url}&limit=24&access_token=${INSTAGRAM_TOKEN}`
 
 export const fetchGalleryItems = async () => {
   try {
@@ -40,7 +40,7 @@ export const fetchImageGalleryItems = async () => {
         return {
           id: post.id,
           photoUrl: post.media_url,
-          hoverUrl: post.children?.data?.[1]?.media_url || null,
+          caption: post.caption || null,
           mediaType: post.media_type,
           linkedProducts,
         }
