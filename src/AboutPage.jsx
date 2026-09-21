@@ -12,7 +12,7 @@ function AboutPage() {
         <p>SIL invites customers into the creative process of making their own clothing, with designs that are accessible to beginner and intermediate makers. We intentionally focus on simple, refined designs that remain current and trend-conscious. SIL aims to foster a community inspired by slow fashion, creativity, and the art of making.</p>
       </div>
       <button className="emailButton" onClick={handleEmailClick}>
-        Email 💌
+        Email <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign: 'middle', marginLeft: '4px'}}><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
       </button>
       <div className="socialLogos">
         <a
