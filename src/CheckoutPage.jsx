@@ -29,6 +29,7 @@ function CheckoutPage() {
           <p>Your bag is empty</p>
         ) : (
           <>
+            <h2 className="bagHeading">Bag</h2>
             {items.map((item) => (
               <div key={item.id} className="bagItem">
                 <img src={item.imageUrl} alt={item.name} className="bagItemImage" />
