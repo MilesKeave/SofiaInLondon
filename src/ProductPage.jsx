@@ -161,12 +161,6 @@ function ProductPage({ product, onAddToBag }) {
         </div>
         <div className="productDescription">
           <div className="productSizes">{sizesDisplay}</div>
-          <SkillDots level={product.skillLevel} max={product.skillLevelMax} />
-          {product.fit && product.fit.length > 0 && (
-            <ul className="productFit">
-              {product.fit.map((line, i) => <li key={i}>{line}</li>)}
-            </ul>
-          )}
           <button
             className="addToCartButton"
             onClick={() => {
@@ -176,6 +170,12 @@ function ProductPage({ product, onAddToBag }) {
           >
             Add To Bag
           </button>
+          <SkillDots level={product.skillLevel} max={product.skillLevelMax} />
+          {product.fit && product.fit.length > 0 && (
+            <ul className="productFit">
+              {product.fit.map((line, i) => <li key={i}>{line}</li>)}
+            </ul>
+          )}
           {product.whatsIncluded && product.whatsIncluded.length > 0 && (
             <div className="whatsIncluded">
               <p className="whatsIncludedTitle">What's Included in Your Download:</p>
