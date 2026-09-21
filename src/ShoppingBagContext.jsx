@@ -70,7 +70,10 @@ export const ShoppingBagProvider = ({ children }) => {
   }
 
   const getTotalPrice = () => {
-    return items.reduce((total, item) => total + (item.priceValue || 0), 0)
+    return items.reduce((total, item) => {
+      const price = item.priceValue || parseFloat(item.price?.replace('$', '')) || 0
+      return total + price
+    }, 0)
   }
 
   const value = {
