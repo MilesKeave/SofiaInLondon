@@ -91,19 +91,19 @@ export default async function handler(req, res) {
     await resend.emails.send({
       from: 'SIL New York <sofia@silnewyork.com>',
       to: customerEmail,
-      subject: 'Your SIL New York Order',
+      subject: 'Order Confirmation — SIL New York',
       attachments,
       html: `
         <div style="max-width: 560px; margin: 0 auto; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: black; padding: 48px 24px; background: white;">
 
           <!-- Logo / Brand -->
-          <div style="margin-bottom: 48px; text-align: left;">
-            <img src="${siteUrl}/favicon.png" width="60" height="60" style="display: block; margin-bottom: 12px;" alt="SIL New York logo" />
+          <div style="margin-bottom: 48px; text-align: center;">
+            <img src="${siteUrl}/favicon.png" width="60" height="60" style="display: inline-block; margin-bottom: 12px;" alt="SIL New York logo" />
             <p style="margin: 0; font-size: 22px; font-weight: 300; letter-spacing: 0.25em; text-transform: uppercase; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">SIL NEW YORK</p>
           </div>
 
           <!-- Section label -->
-          <p style="margin: 0 0 16px 0; font-size: 13px; font-weight: 300; color: black;">Order</p>
+          <p style="margin: 0 0 6px 0; font-size: 13px; font-weight: 300; color: black;">Order</p>
 
           <!-- Products -->
           <table width="100%" cellpadding="0" cellspacing="0" border="0">
