@@ -14,11 +14,15 @@ function ImageGalleryPage({ galleryItems = [], onItemClick }) {
           className="imageGalleryItem"
           onClick={() => onItemClick && onItemClick(item)}
         >
-          <img
-            src={item.photoUrl}
-            alt="Gallery image"
-            draggable="false"
-          />
+          <div className="shimmerWrapper">
+            <img
+              src={item.photoUrl}
+              alt="Gallery image"
+              draggable="false"
+              loading={index < 6 ? 'eager' : 'lazy'}
+              onLoad={(e) => e.target.classList.add('imgLoaded')}
+            />
+          </div>
           {item.caption && (
             <div className="imageGalleryOverlay">
               <p className="imageGalleryDescription">{item.caption}</p>

@@ -1,8 +1,5 @@
 const PRODUCTS_API_URL = '/productsData.json'
 
-const INSTAGRAM_TOKEN = import.meta.env.VITE_INSTAGRAM_TOKEN
-const INSTAGRAM_API_URL = `https://graph.instagram.com/me/media?fields=id,media_type,media_url,thumbnail_url,caption,children{media_url}&limit=24&access_token=${INSTAGRAM_TOKEN}`
-
 export const fetchGalleryItems = async () => {
   try {
     const response = await fetch(PRODUCTS_API_URL)
@@ -19,7 +16,7 @@ export const fetchGalleryItems = async () => {
 export const fetchImageGalleryItems = async () => {
   try {
     const [igResponse, linksResponse, productsResponse] = await Promise.all([
-      fetch(INSTAGRAM_API_URL),
+      fetch('/api/instagram'),
       fetch('/galleryLinks.json'),
       fetch('/productsData.json')
     ])
@@ -49,4 +46,3 @@ export const fetchImageGalleryItems = async () => {
     throw new Error(`Failed to fetch Instagram feed: ${error.message}`)
   }
 }
-

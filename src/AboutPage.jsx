@@ -2,14 +2,14 @@ import './AboutPage.css'
 
 function AboutPage() {
   const handleEmailClick = () => {
-    window.location.href = 'mailto:sbkeaveny@gmail.com'
+    window.location.href = 'mailto:sofia@silnewyork.com'
   }
 
   return (
     <div className="aboutPage">
       <div className="aboutDescription">
         <p>SIL was founded by Sofia Keaveny, a womenswear designer with luxury industry experience in both New York and London. She holds a BFA in Fashion Design from Parsons School of Design.</p>
-        <p>SIL invites customers into the creative process of making their own clothing, with designs that are accessible to beginner and intermediate makers. We intentionally focus on simple, refined designs that remain current and trend-conscious. SIL aims to foster a community inspired by slow fashion, creativity, and the art of making.</p>
+        <p>SIL invited customers into the creative process of making their own clothing by providing beginner and intermediate level sewing patterns. We intentionally focus on simple, refined designs that remain current and trend-conscious. SIL aims to foster a community inspired by slow fashion, creativity, and the art of making.</p>
       </div>
       <div className="socialLogos">
         <a

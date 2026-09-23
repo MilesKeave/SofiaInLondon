@@ -25,12 +25,15 @@ function GalleryItem(props) {
       onMouseLeave={() => setHovered(false)}
     >
       {image2 && <link rel="preload" as="image" href={image2} />}
-      <img
-        src={hovered && image2 ? image2 : image1}
-        alt={item.name}
-        draggable="false"
-        loading="eager"
-      />
+      <div className="shimmerWrapper">
+        <img
+          src={hovered && image2 ? image2 : image1}
+          alt={item.name}
+          draggable="false"
+          loading="eager"
+          onLoad={(e) => e.target.classList.add('imgLoaded')}
+        />
+      </div>
       <div className="galleryItemInfo">
         <h3>{item.name}</h3>
         <p>{item.price}</p>
