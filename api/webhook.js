@@ -125,7 +125,7 @@ export default async function handler(req, res) {
 
           <!-- Footer -->
           <p style="margin-top: 48px; font-size: 11px; color: #999; line-height: 1.6;">
-            Your pattern PDFs are attached to this email.<br/>
+            Your PDF's are attached to this email.<br/>
             Questions? Reach us at sofia@silnewyork.com
           </p>
 
