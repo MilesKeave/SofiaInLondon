@@ -77,12 +77,6 @@
     }
 
     .imageGalleryOverlay {
-        top: 0;
-        height: 100%;
-    }
-
-    .imageGalleryDescription {
-        font-size: 11px;
-        padding: 0.5rem 10px;
+        display: none;
     }
 }
