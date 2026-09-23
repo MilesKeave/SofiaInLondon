@@ -103,7 +103,7 @@ export default async function handler(req, res) {
           </div>
 
           <!-- Section label -->
-          <p style="margin: 0 0 16px 0; font-size: 13px; font-weight: 300; color: black;">order</p>
+          <p style="margin: 0 0 16px 0; font-size: 13px; font-weight: 300; color: black;">Order</p>
 
           <!-- Products -->
           <table width="100%" cellpadding="0" cellspacing="0" border="0">
