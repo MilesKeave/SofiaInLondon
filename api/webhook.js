@@ -62,7 +62,7 @@ export default async function handler(req, res) {
           <h1 style="font-size: 14px; font-weight: 300; letter-spacing: 0.15em; margin: 0 0 40px 0; text-transform: uppercase;">SIL New York</h1>
           <p style="font-size: 13px; font-weight: 300; line-height: 1.7; margin: 0 0 40px 0;">Thank you for your purchase. Your downloads are ready below.</p>
           ${downloadsHtml}
-          <p style="font-size: 11px; color: #999; margin-top: 48px; line-height: 1.6;">Questions? Reach us at sbkeaveny@gmail.com</p>
+          <p style="font-size: 11px; color: #999; margin-top: 48px; line-height: 1.6;">Questions? Reach us at sofia@silnewyork.com</p>
         </div>
       `
     })
