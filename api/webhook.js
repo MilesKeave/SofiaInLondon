@@ -97,8 +97,9 @@ export default async function handler(req, res) {
         <div style="max-width: 560px; margin: 0 auto; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: black; padding: 48px 24px; background: white;">
 
           <!-- Logo / Brand -->
-          <div style="margin-bottom: 48px;">
-            <p style="margin: 0; font-size: 22px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;">SIL New York</p>
+          <div style="margin-bottom: 48px; text-align: left;">
+            <img src="${siteUrl}/favicon.png" width="60" height="60" style="display: block; margin-bottom: 12px;" alt="SIL New York logo" />
+            <p style="margin: 0; font-size: 22px; font-weight: 300; letter-spacing: 0.25em; text-transform: uppercase; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">SIL NEW YORK</p>
           </div>
 
           <!-- Section label -->
