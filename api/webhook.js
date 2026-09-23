@@ -54,7 +54,7 @@ export default async function handler(req, res) {
     `).join('')
 
     await resend.emails.send({
-      from: 'SIL New York <orders@silnewyork.com>',
+      from: 'SIL New York <sofia@silnewyork.com>',
       to: customerEmail,
       subject: 'Your SIL New York Downloads',
       html: `
