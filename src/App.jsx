@@ -12,6 +12,24 @@ import ShoppingBagSideBar from './ShoppingBagSideBar'
 import { fetchGalleryItems, fetchImageGalleryItems } from './api'
 import SuccessPage from './SuccessPage'
 
+const pageToUrl = {
+  gallery: '/',
+  product: '/product',
+  checkout: '/checkout',
+  imageGallery: '/gallery',
+  imageGalleryItem: '/gallery/item',
+  about: '/about',
+}
+
+const urlToPage = {
+  '/': 'gallery',
+  '/product': 'product',
+  '/checkout': 'checkout',
+  '/gallery': 'imageGallery',
+  '/gallery/item': 'imageGalleryItem',
+  '/about': 'about',
+}
+
 function App() {
   const [galleryItems, setGalleryItems] = useState([])
   const [imageGalleryItems, setImageGalleryItems] = useState([])
@@ -22,13 +40,43 @@ function App() {
   const [searchDropdown, setSearchDropdown] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
   const isSuccess = new URLSearchParams(window.location.search).get('success') === 'true'
-  const [currentPage, setCurrentPage] = useState(isSuccess ? 'success' : 'gallery')
+  const initialPage = isSuccess ? 'success' : (urlToPage[window.location.pathname] || 'gallery')
+  const [currentPage, setCurrentPage] = useState(initialPage)
   const [selectedProduct, setSelectedProduct] = useState(null)
   const [selectedGalleryItem, setSelectedGalleryItem] = useState(null)
   const [isShoppingBagSideBarOpen, setIsShoppingBagSideBarOpen] = useState(false)
   const [isShoppingBagSideBarClosing, setIsShoppingBagSideBarClosing] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [isMobileMenuClosing, setIsMobileMenuClosing] = useState(false)
+
+  const navigate = (page, { product, galleryItem } = {}) => {
+    const nextProduct = product !== undefined ? product : selectedProduct
+    const nextGalleryItem = galleryItem !== undefined ? galleryItem : selectedGalleryItem
+    if (product !== undefined) setSelectedProduct(product)
+    if (galleryItem !== undefined) setSelectedGalleryItem(galleryItem)
+    setCurrentPage(page)
+    const url = pageToUrl[page] || '/'
+    history.pushState({ page, selectedProduct: nextProduct, selectedGalleryItem: nextGalleryItem }, '', url)
+  }
+
+  useEffect(() => {
+    history.replaceState(
+      { page: initialPage, selectedProduct: null, selectedGalleryItem: null },
+      '',
+      window.location.href
+    )
+
+    const handlePopState = (e) => {
+      if (!e.state) return
+      const { page, selectedProduct: prod, selectedGalleryItem: item } = e.state
+      if (prod !== undefined) setSelectedProduct(prod)
+      if (item !== undefined) setSelectedGalleryItem(item)
+      setCurrentPage(page || 'gallery')
+    }
+
+    window.addEventListener('popstate', handlePopState)
+    return () => window.removeEventListener('popstate', handlePopState)
+  }, [])
 
   const closeMobileMenu = () => {
     setIsMobileMenuClosing(true)
@@ -82,7 +130,7 @@ function App() {
   const renderPage = () => {
     if (loading && currentPage === 'gallery') return <p>Loading...</p>
     if (error && currentPage === 'gallery') return <p>Error: {error}</p>
-    
+
     switch (currentPage) {
       case 'gallery':
         const filteredGalleryItems = galleryItems.filter(item =>
@@ -90,17 +138,14 @@ function App() {
           item.description.toLowerCase().includes(searchTerm.toLowerCase())
         )
         return (
-          <Gallery 
-            galleryItems={filteredGalleryItems} 
-            onProductClick={(product) => {
-              setSelectedProduct(product)
-              setCurrentPage('product')
-            }}
+          <Gallery
+            galleryItems={filteredGalleryItems}
+            onProductClick={(product) => navigate('product', { product })}
           />
         )
       case 'product':
         return (
-          <ProductPage 
+          <ProductPage
             product={selectedProduct}
             onAddToBag={() => setIsShoppingBagSideBarOpen(true)}
           />
@@ -111,37 +156,28 @@ function App() {
         if (imageGalleryLoading) return <p>Loading...</p>
         if (imageGalleryError) return <p>Error: {imageGalleryError}</p>
         return (
-          <ImageGalleryPage 
-            galleryItems={imageGalleryItems} 
-            onItemClick={(item) => {
-              setSelectedGalleryItem(item)
-              setCurrentPage('imageGalleryItem')
-            }}
+          <ImageGalleryPage
+            galleryItems={imageGalleryItems}
+            onItemClick={(item) => navigate('imageGalleryItem', { galleryItem: item })}
           />
         )
       case 'imageGalleryItem':
         return (
           <ImageGalleryItem
             item={selectedGalleryItem}
-            onProductClick={(product) => {
-              setSelectedProduct(product)
-              setCurrentPage('product')
-            }}
+            onProductClick={(product) => navigate('product', { product })}
             onAddToBag={() => setIsShoppingBagSideBarOpen(true)}
           />
         )
       case 'success':
-        return <SuccessPage setCurrentPage={setCurrentPage} />
+        return <SuccessPage setCurrentPage={(page) => navigate(page)} />
       case 'about':
         return <AboutPage />
       default:
         return (
-          <Gallery 
-            galleryItems={galleryItems} 
-            onProductClick={(product) => {
-              setSelectedProduct(product)
-              setCurrentPage('product')
-            }}
+          <Gallery
+            galleryItems={galleryItems}
+            onProductClick={(product) => navigate('product', { product })}
           />
         )
     }
@@ -149,10 +185,10 @@ function App() {
 
   return (
     <div className="homePage">
-      <Header 
-        searchDropdown={searchDropdown} 
+      <Header
+        searchDropdown={searchDropdown}
         setSearchDropdown={setSearchDropdown}
-        setCurrentPage={setCurrentPage}
+        setCurrentPage={(page) => navigate(page)}
         mobileMenuOpen={mobileMenuOpen}
         setMobileMenuOpen={setMobileMenuOpen}
         isMobileMenuClosing={isMobileMenuClosing}
@@ -161,23 +197,20 @@ function App() {
       <div className={`mainBody ${currentPage === 'checkout' ? 'checkoutPageActive' : ''}`}>
         {searchDropdown && (
           <>
-            <div 
+            <div
               className="searchOverlay"
               onClick={() => setSearchDropdown(false)}
             />
-            <SearchDropdown 
-              onClose={() => setSearchDropdown(false)} 
+            <SearchDropdown
+              onClose={() => setSearchDropdown(false)}
               searchTerm={searchTerm}
               setSearchTerm={setSearchTerm}
               galleryItems={galleryItems}
               onProductClick={(product) => {
-                setSelectedProduct(product)
-                setCurrentPage('product')
+                navigate('product', { product })
                 setSearchDropdown(false)
               }}
-              onSearch={() => {
-                setCurrentPage('gallery')
-              }}
+              onSearch={() => navigate('gallery')}
             />
           </>
         )}
@@ -185,14 +218,14 @@ function App() {
       </div>
       {isShoppingBagSideBarOpen && (
         <>
-          <div 
+          <div
             className="shoppingBagSidebarOverlay"
             onClick={closeShoppingBagSideBar}
           />
-          <ShoppingBagSideBar 
+          <ShoppingBagSideBar
             onClose={closeShoppingBagSideBar}
             isClosing={isShoppingBagSideBarClosing}
-            setCurrentPage={setCurrentPage}
+            setCurrentPage={(page) => navigate(page)}
           />
         </>
       )}
