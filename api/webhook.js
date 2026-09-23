@@ -124,7 +124,7 @@ export default async function handler(req, res) {
           </table>
 
           <!-- Footer -->
-          <p style="margin-top: 48px; font-size: 11px; color: #999; line-height: 1.6;">
+          <p style="margin-top: 48px; font-size: 11px; color: #999; line-height: 1.6; text-align: center;">
             Your PDF's are attached to this email.<br/>
             Questions? Reach us at sofia@silnewyork.com
           </p>
