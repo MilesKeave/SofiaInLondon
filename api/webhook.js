@@ -91,7 +91,7 @@ export default async function handler(req, res) {
     await resend.emails.send({
       from: 'SIL New York <sofia@silnewyork.com>',
       to: customerEmail,
-      subject: 'Order Confirmation — SIL New York',
+      subject: 'ORDER CONFIRMATION - SIL NEW YORK',
       attachments,
       html: `
         <div style="max-width: 560px; margin: 0 auto; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: black; padding: 48px 24px; background: white;">
