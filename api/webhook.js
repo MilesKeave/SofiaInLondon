@@ -94,6 +94,7 @@ export default async function handler(req, res) {
       subject: 'ORDER SUMMARY',
       attachments,
       html: `
+        <div style="display:none;max-height:0;overflow:hidden;">&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;</div>
         <div style="max-width: 560px; margin: 0 auto; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: black; padding: 48px 24px; background: white;">
 
           <!-- Logo / Brand -->
