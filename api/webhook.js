@@ -20,17 +20,6 @@ const productDetails = {
   'carlisle-skirt':       { name: 'Carlisle Skirt',       price: 12 },
 }
 
-async function fetchAttachment(url, filename) {
-  try {
-    const res = await fetch(url)
-    if (!res.ok) return null
-    const buffer = await res.arrayBuffer()
-    return { filename, content: Buffer.from(buffer) }
-  } catch {
-    return null
-  }
-}
-
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' })
@@ -56,10 +45,14 @@ export default async function handler(req, res) {
     const productIds = JSON.parse(session.metadata.productIds)
     const total = (session.amount_total / 100).toFixed(2)
 
-    // Build product rows (image left, name + price right)
     const productRowsHtml = productIds.map(id => {
       const product = productDetails[id] || { name: id, price: '—' }
       const imageUrl = `${siteUrl}/products/${id}/image-1.jpg`
+      const downloadLinks = `
+        <a href="${siteUrl}/products/${id}/instruction.pdf" style="display: block; font-size: 11px; color: #555; text-decoration: none; margin-top: 8px;">↓ Instructions</a>
+        <a href="${siteUrl}/products/${id}/pattern-a4.pdf" style="display: block; font-size: 11px; color: #555; text-decoration: none; margin-top: 4px;">↓ Pattern (A4)</a>
+        <a href="${siteUrl}/products/${id}/pattern-letter.pdf" style="display: block; font-size: 11px; color: #555; text-decoration: none; margin-top: 4px;">↓ Pattern (Letter)</a>
+      `
       return `
         <tr>
           <td style="padding: 24px 0; border-bottom: 1px solid #e8e8e8;">
@@ -71,6 +64,7 @@ export default async function handler(req, res) {
                 <td valign="top" style="padding-left: 24px;">
                   <p style="margin: 0 0 8px 0; font-size: 13px; font-weight: 400; color: black;">${product.name}</p>
                   <p style="margin: 0; font-size: 13px; color: black;">$${product.price}.00</p>
+                  ${downloadLinks}
                 </td>
               </tr>
             </table>
@@ -79,20 +73,10 @@ export default async function handler(req, res) {
       `
     }).join('')
 
-    // Fetch all PDFs as attachments
-    const attachmentPromises = productIds.flatMap(id => [
-      fetchAttachment(`${siteUrl}/products/${id}/instruction.pdf`,   `${productDetails[id]?.name || id} - Instructions.pdf`),
-      fetchAttachment(`${siteUrl}/products/${id}/pattern-a4.pdf`,    `${productDetails[id]?.name || id} - Pattern A4.pdf`),
-      fetchAttachment(`${siteUrl}/products/${id}/pattern-letter.pdf`,`${productDetails[id]?.name || id} - Pattern Letter.pdf`),
-    ])
-    const attachmentResults = await Promise.all(attachmentPromises)
-    const attachments = attachmentResults.filter(Boolean)
-
     await resend.emails.send({
       from: 'SIL New York <sofia@silnewyork.com>',
       to: customerEmail,
       subject: 'ORDER SUMMARY',
-      attachments,
       html: `
         <div style="display:none; max-height:0px; overflow:hidden; mso-hide:all;" aria-hidden="true">SIL NEW YORK</div>
         <div style="display:none; max-height:0px; overflow:hidden; mso-hide:all;" aria-hidden="true">&#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy; &#847;&zwnj;&nbsp;&#8199;&shy;</div>
@@ -125,7 +109,7 @@ export default async function handler(req, res) {
           </table>
 
           <!-- Footer -->
-          <p style="margin-top: 20px; margin-bottom: 4px; font-size: 11px; color: #555; text-align: center;">Your PDF's are attached to this email.</p>
+          <p style="margin-top: 20px; margin-bottom: 4px; font-size: 11px; color: #555; text-align: center;">Your downloads are linked above next to each product.</p>
           <p style="margin: 0; font-size: 11px; color: #555; text-align: center;">Questions? Reach us at sofia@silnewyork.com</p>
 
         </div>
