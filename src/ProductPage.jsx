@@ -154,7 +154,11 @@ function ProductPage({ product, onAddToBag }) {
             <div className="whatsIncluded">
               <p className="whatsIncludedTitle">What's Included in Your Download:</p>
               <ul>
-                {product.whatsIncluded.map((line, i) => <li key={i}>{line}</li>)}
+                {product.whatsIncluded.map((line, i) =>
+                  i === 1
+                    ? <p key={i} style={{ margin: '4px 0', fontSize: '13px' }}>{line}</p>
+                    : <li key={i}>{line}</li>
+                )}
               </ul>
             </div>
           )}
