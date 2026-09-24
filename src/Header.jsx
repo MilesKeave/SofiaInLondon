@@ -57,7 +57,7 @@ function Header({ searchDropdown, setSearchDropdown, setCurrentPage, mobileMenuO
                   <button className="navbar-left-button" onClick={() => setCurrentPage('gallery')}>Shop</button>
                   <button className="navbar-left-button" onClick={() => setCurrentPage('imageGallery')}>Gallery</button>
               </div>
-              <div className="navbar-center">
+              <div className="navbar-center" onClick={() => setCurrentPage('gallery')} style={{ cursor: 'pointer' }}>
                   <h1>SIL NEW YORK</h1>
               </div>
               <div className="navbar-right">
@@ -85,7 +85,7 @@ function Header({ searchDropdown, setSearchDropdown, setCurrentPage, mobileMenuO
                 </button>
               </div>
           </div>
-          <div className="subTitle">
+          <div className="subTitle" onClick={() => setCurrentPage('gallery')} style={{ cursor: 'pointer' }}>
               <h3>Digital Patterns</h3>
           </div>
       </div>
