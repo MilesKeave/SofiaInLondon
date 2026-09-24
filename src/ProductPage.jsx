@@ -156,7 +156,7 @@ function ProductPage({ product, onAddToBag }) {
               <ul>
                 {product.whatsIncluded.map((line, i) =>
                   i === 1
-                    ? <p key={i} style={{ margin: '4px 0', fontSize: '13px' }}>{line}</p>
+                    ? <p key={i} style={{ margin: '4px 0', fontSize: '13px', marginLeft: '-1rem' }}>{line}</p>
                     : <li key={i}>{line}</li>
                 )}
               </ul>
